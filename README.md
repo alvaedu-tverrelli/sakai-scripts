@@ -10,11 +10,20 @@ but is a lot more comfortable with a 4GB or more app server.
 Getting Started on Mac (as needed)
 ==================================
 
+* Install git using the command
+
+        xcode-select --install
+
 * Make sure you have Java-8 JDK (not JRE) Installed - don't get  rid of Java 1.7 if you
 want to work on Sakai 10.
 
     java -version
     javac -version
+
+* Install OpenJDK (if needed) from https://github.com/AdoptOpenJDK/homebrew-openjdk
+
+	brew tap AdoptOpenJDK/openjdk
+	brew cask install adoptopenjdk10
 
 * Make sure you have Maven (mvn) 3.3 or later installed. If you have Homebrew installed, you can use
 
@@ -29,10 +38,6 @@ for Mac:
 
 * Go to https://github.com/sakaiproject/sakai and "fork" a copy into
 your github account
-
-* Install git using the command
-
-        xcode-select --install
 
 * Set up git with the folowing commands
 
@@ -105,16 +110,15 @@ named "dev" in my home directory:
 your login files.  Once you update your login files, close
 your terminal window and reopen your window and type:
 
-Here is the addition to the `~bashrc` on ubuntu:
+Here is the addition to the `~/.bashrc` on ubuntu:
 
     export MAVEN_OPTS='-Xms512m -Xmx1024m -Djava.util.Arrays.useLegacyMergeSort=true'
-    export JAVA_OPTS="-server -Xmx1028m -XX:MaxMetaspaceSize=512m 
-    -Dorg.apache.jasper.compiler.Parser.STRICT_QUOTE_ESCAPING=false 
-    -Djava.awt.headless=true -Dcom.sun.management.jmxremote"
+    export JAVA_OPTS="-server -Xmx1028m -XX:MaxMetaspaceSize=512m -Dorg.apache.jasper.compiler.Parser.STRICT_QUOTE_ESCAPING=false -Djava.awt.headless=true -Dcom.sun.management.jmxremote"
 
-        cd
-        cd dev/sakai-scripts
-        echo $JAVA_OPTS
+Note that the second line is very long. Then run these commands:
+
+    source ~/.bashrc
+     echo $JAVA_OPTS
 
 If you see the settings, you have edited the correct file, if not try
 another of the files.
@@ -131,8 +135,8 @@ Using Oracle as your Database
 
 Developing with Oracle as your database its own [special setup](ORACLE.md).
 
-Common Steps
-============
+Common Steps For Ubuntu and Mac
+===============================
 
 * Open a teminal and navigate to the sakai-scripts directory and:
 
@@ -146,6 +150,8 @@ Common Steps
 * Make sure your MySQL is running run `bash db.sh` to create a database
 
 * Run `bash na.sh` to set up the Tomcat
+
+* If you have not already done so, clone the Sakai repository to your account in the browser
 
 * Run `bash co.sh` to check the Sakai source code out
 
